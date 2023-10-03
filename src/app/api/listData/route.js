@@ -1,11 +1,6 @@
 import { NextResponse } from "next/server";
 
-let taskData = [
-    {
-        id : "0",
-        mensagem : "Mensagem De Teste",
-    }
-];
+let taskData = [];
 
 export async function GET(){
 
