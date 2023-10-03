@@ -1,6 +1,7 @@
 Colecao de API e Funcoes com o intuito de ajudar os estudantes da materia de LOP a criar uma To-Do-List em Next.js
 
 funcoes:
+
     getJanela():
         -Retorna a lista de dados das presentes na API
 
