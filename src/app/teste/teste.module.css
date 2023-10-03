@@ -1,0 +1,73 @@
+.mainSec{
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(#FAF2D3, #F4E869);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+/* header */
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.headerText{
+    color: #666666;
+    margin: 2rem 0;
+}
+
+/* Seach bar */
+
+.searchBar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.messageInput{
+    border: none;
+    width: 15%;
+    height: 2rem;
+    background-color: white;
+    color: #666666;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 0 1rem;
+    outline: none;
+}
+
+.messageButton{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-color: transparent;
+    border-left-color: #666666;
+    padding: 0 1rem;
+    background-color: white;
+    color: #666666;
+    font-weight: bold;
+}
+
+.messageButton:hover{
+    cursor: pointer;
+}
+
+/* Task Windown */
+
+.taskContainer{
+    width: 30%;
+    background-color: white;
+    color: #666666;
+    margin-top: 1rem;
+    padding: 1rem 1rem;
+    border-radius: 20px;
+}
+
+.taskMessageContainer{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

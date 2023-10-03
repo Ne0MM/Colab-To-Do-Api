@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react"
+import styles from "./teste.module.css"
 import { postJanela, getJanela , putJanela , deleteJanela} from "../components/ToDoFunctions"
 
 export default function page() {
@@ -8,6 +9,13 @@ export default function page() {
   const [ dadosJanelas, setDadosJanelas] = useState([]);
   const [ idJanela, setIdJanela] = useState(0);
   const [ mensagemJanela, setMensagemJanela] = useState("");
+
+  // Atualiza as informacoes quando entrar no site
+  useEffect(() => {
+
+    refreshJanela();
+
+  },[])
 
   // Atualizar as janelas existentes
   const refreshJanela = async () => {
@@ -25,7 +33,9 @@ export default function page() {
       mensagem : mensagemJanela,
     }
 
-    postJanela(novaJanela);
+    await postJanela(novaJanela);
+    setIdJanela(idJanela + 1);
+    refreshJanela();
   }
 
   // Modificar Janelas existentes por id
@@ -40,31 +50,57 @@ export default function page() {
   }
 
   return (
-    <div>
+    <div className={styles.mainSec}>
 
-      <div>
-        <button onClick={() => refreshJanela()}>Atualizar dados</button>
-      </div>
+      {/* Header */}
+      <header className={styles.header}>
+        <h1 className={styles.headerText}>
+          To Do List
+        </h1>
+      </header>
 
-      <div>
-        <span>Id da janela</span>
-        <input 
-        type="text"
-        value={idJanela}
-        onChange={(e) => setIdJanela(e.target.value)}
-        />
+      {/* Search Bar */}
+      <div className={styles.searchBar}>
 
-        <span>Mensagem Da janela</span>
-        <input 
+        <input
         type="text"
         value={mensagemJanela}
         onChange={(e) => setMensagemJanela(e.target.value)}
+        className={styles.messageInput}
+        maxLength={60}
         />
 
-        <button onClick={() => postDadosJanelas()}>Criar nova janela</button>
-        <button onClick={() => putDadosJanelas()}>Modificar Janela Existente</button>
-        <button onClick={() => deleteJanela(idJanela)}>Deletar janela</button>
+        <button
+        className={styles.messageButton}
+        onClick={() => postDadosJanelas()}
+        >
+          adicionar
+        </button>
+
       </div>
+
+      {/* Task Windown */}
+      {
+        dadosJanelas.map((element) => {
+          return (
+            <div 
+            key={element.id}
+            className={styles.taskContainer}>
+
+              <p>
+                id : {element.id}
+              </p>
+
+              <div className={styles.taskMessageContainer}>
+                <p>
+                  {element.mensagem}
+                </p>
+              </div>
+            </div>
+          )
+        })
+      }
+
     </div>
   )
 }
